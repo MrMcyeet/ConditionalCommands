@@ -261,6 +261,11 @@ class Expression {
 
     // Errors
     static class ParseException extends RuntimeException {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
+
         ParseException(String desc) {
             super(desc);
         }
