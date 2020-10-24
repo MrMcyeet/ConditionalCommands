@@ -1,5 +1,6 @@
 package me.konsolas.conditionalcommands;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -65,7 +66,7 @@ public class ConditionalCommands extends JavaPlugin {
         }
 
         // Get the condition
-        String modifiedStr = args[2];
+        String modifiedStr = PlaceholderAPI.setPlaceholders(placeholderFor, args[2]);
         for (Placeholders placeholder : Placeholders.values()) {
             if (placeholder.getPlaceholder().shouldApply(modifiedStr)) {
                 try {
@@ -125,14 +126,14 @@ public class ConditionalCommands extends JavaPlugin {
         switch (action) {
             case "unless":
                 if (!expression.evaluate()) {
-                    dispatchCommand(sender, command.toString());
+                    dispatchCommand(sender, PlaceholderAPI.setPlaceholders(placeholderFor, command.toString()));
                 } else {
                     sender.sendMessage((player ? ChatColor.GOLD : "") + "[ConditionalCommands] > Not dispatching command because \"" + args[2] + "\" evaluated to true");
                 }
                 break;
             case "if":
                 if (expression.evaluate()) {
-                    dispatchCommand(sender, command.toString());
+                    dispatchCommand(sender, PlaceholderAPI.setPlaceholders(placeholderFor, command.toString()));
                 } else {
                     sender.sendMessage((player ? ChatColor.GOLD : "") + "[ConditionalCommands] > Not dispatching command because \"" + args[2] + "\" evaluated to false");
                 }

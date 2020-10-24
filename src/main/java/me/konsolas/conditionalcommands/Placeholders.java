@@ -10,7 +10,7 @@ enum Placeholders {
     UPTIME(new PlaceholderUptime()),
     PERM(new PlaceholderPerm()),
     AACVL(new PlaceholderAACVL()),
-    CHANCE(new PlaceholderChance());
+    CHANCE(new PlaceholderChance()); 
 
     private Placeholder placeholder;
 
