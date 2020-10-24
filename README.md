@@ -43,13 +43,15 @@ Placeholders are delimited by '-'. Since they're applied with a replace, errors 
  - ```perm:<permission>``` - 1.0 if the player has the permission, 0.0 otherwise. e.g. ```-perm:essentials.home-```
  - ```aacvl:<check>``` - AAC violation level of the given check (internal name). e.g. ```-aacvl:speed-```
  - ```chance:<percentage>%``` - Will be 1.0 percentage% of the time. e.g. ```-chance:34.5%-```
+ - ```%PlaceholderHere%``` - You can use this to compare PlaceholderAPI vars to stuffs ```%player_ping%```
 
 ### Multi command / delayed commands
 In the 'do' clause of the statement, multiple commands can be executed at once, and selected commands can be delayed if desired. The command delimiter is ```/<delay>/```, where the integer between ```/``` and ```/``` denotes the delay before the command should be executed in ticks. Here are some examples:
 
 ```
-/cc konsolas if -aacvl:heuristics->0 do /1200/ ban konsolas 1 minute delayed ban for killaura
-/cc konsolas if -perm:some.permission-=1 do /0/ broadcast konsolas has some.permission! /0/ broadcast second broadcast! /20/ broadcast 1 second later!
+/ccmd konsolas if -aacvl:heuristics->0 do /1200/ ban konsolas 1 minute delayed ban for killaura
+/ccmd konsolas if -perm:some.permission-=1 do /0/ broadcast konsolas has some.permission! /0/ broadcast second broadcast! /20/ broadcast 1 second later!
+/ccmd MrMcyeet if %SomePlaceholder%=35 do /0/ ban MrMcyeet Your ping is too high xD
 ```
 
 ### Developer mode
